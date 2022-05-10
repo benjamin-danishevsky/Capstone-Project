@@ -44,6 +44,7 @@ def upgrade():
     sa.Column('comment', sa.String(length=255), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('tweet_id', sa.Integer(), nullable=False),
+    sa.PrimaryKeyConstraint('id'),
     sa.ForeignKeyConstraint(['user_id'], ['users.id']),
     sa.ForeignKeyConstraint(['tweet_id'], ['tweets.id'])
     )
