@@ -9,7 +9,21 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
+    bio = db.Column(db.String(255), nullable=False)
+    profile_pic = db.Column(db.String, nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
+
+    tweet = db.relationship(
+        "Tweet",
+        back_populates='owner',
+        cascade="all, delete-orphan"
+    )
+
+    comment = db.relationship(
+        "Comment",
+        back_populates='owner',
+        cascade="all, delete-orphan"
+    )
 
     @property
     def password(self):
@@ -26,5 +40,7 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'bio': self.bio,
+            'profile_pic': self.profile_pic
         }
