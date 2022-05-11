@@ -17,7 +17,7 @@ def seed_tweets():
     )
 
     tweet3 = Tweet(
-        text='This is tweet number 2',
+        text='This is tweet number 3',
         created_at= datetime.datetime.today(),
         updated_at= datetime.datetime.today(),
         user_id=3
@@ -31,14 +31,14 @@ def seed_tweets():
     )
 
     tweet5 = Tweet(
-        text='This is tweet number 4',
+        text='This is tweet number 5',
         created_at= datetime.datetime.today(),
         updated_at= datetime.datetime.today(),
         user_id=2
     )
 
     tweet6 = Tweet(
-        text='This is tweet number 4',
+        text='This is tweet number 6',
         created_at= datetime.datetime.today(),
         updated_at= datetime.datetime.today(),
         user_id=3
