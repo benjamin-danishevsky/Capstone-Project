@@ -64,3 +64,11 @@ def edit_tweet(id):
         return tweet.to_dict()
 
     return form.errors
+
+@tweet_routes.route('/<int:id>', methods=["DELETE"])
+#@login_required #for when adding autherization
+def delete_tweet(id):
+    tweet = Tweet.query.get(id)
+    db.session.delete(tweet)
+    db.session.commit()
+    return tweet.to_dict()
