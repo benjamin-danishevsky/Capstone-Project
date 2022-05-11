@@ -3,6 +3,7 @@ from app.models import db, User, Tweet
 from flask_login import login_required, current_user
 from datetime import datetime
 from app.forms import NewTweetForm
+from app.forms import EditTweetForm
 
 tweet_routes = Blueprint('tweets', __name__)
 
@@ -43,5 +44,23 @@ def newTweet():
         return {
             "tweet": tweet.to_dict()
         }
+
+    return form.errors
+
+#Edit existing tweet
+@tweet_routes.route('/<int:id>/edit', methods=['POST'])
+#@login_required #for when adding autherization
+def edit_tweet(id):
+    form = EditTweetForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    data = form.data
+    tweet = Tweet.query.get(id)
+
+    if form.validate_on_submit():
+        tweet.text = data['text']
+        tweet.updated_at = datetime.now()
+
+        db.session.commit()
+        return tweet.to_dict()
 
     return form.errors
