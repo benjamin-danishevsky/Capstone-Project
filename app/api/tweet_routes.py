@@ -12,3 +12,10 @@ def get_all_tweets():
     return {
         "tweets": [tweet.to_dict() for tweet in tweets]
     }
+
+@tweet_routes.route('/<int:id>')
+def get_tweet(id):
+    tweet = Tweet.query.get(id)
+    return {
+        "tweet": tweet.to_dict()
+    }
