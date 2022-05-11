@@ -6,7 +6,7 @@ import splashImg from '../images/pokemon-splash.png';
 import icon from '../images/bulbasaur.png'
 function SplashPage(){
 
-
+    const history = useHistory();
 
     return (
         <>
@@ -18,8 +18,8 @@ function SplashPage(){
                     <img src={icon} alt='icon' className='icon'/>
                     <h1 className='splash-h1'>Happening now</h1>
                     <h3 className='splash-h3'>Join PokeChirps today.</h3>
-                    <a href='/sign-up'><button className='sign-up-button'>Sign up</button></a>
-                    <a href='/login'><button className='login-button'>Sign in</button></a>
+                    <button className='sign-up-button' onClick={() => history.push('/sign-up')} >Sign up</button>
+                    <button className='login-button' onClick={() => history.push('/login')} >Sign in</button>
                 </div>
             </div>
         </>
