@@ -11,6 +11,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 
 import SplashPage from './components/SplashPage';
+import Tweets from './components/Tweets'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -54,6 +55,9 @@ function App() {
 
         <Route exact path='/splash'>
           <SplashPage />
+        </Route>
+        <Route exact path='/tweets'>
+          <Tweets />
         </Route>
 
       </Switch>
