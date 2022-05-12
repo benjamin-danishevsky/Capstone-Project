@@ -11,7 +11,8 @@ import User from './components/User';
 import { authenticate } from './store/session';
 
 import SplashPage from './components/SplashPage';
-import Tweets from './components/Tweets'
+import Tweets from './components/Tweets/index'
+import TweetForm from './components/Tweets/NewTweetForm'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -58,6 +59,7 @@ function App() {
         </Route>
         <Route exact path='/tweets'>
           <Tweets />
+          <TweetForm />
         </Route>
 
       </Switch>

@@ -14,7 +14,7 @@ const Tweets = () => {
     const sessionUser = useSelector(state => state.session.user)
     const tweets = useSelector(state => state.tweets)
     const tweetsData = Object.values(tweets)
-    console.log(tweetsData)
+    
 
     return (
         <>
