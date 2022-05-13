@@ -1,9 +1,15 @@
 const GET_ALL_TWEETS = 'tweets/GET_ALL_TWEETS';
+const GET_ONE_TWEET = 'tweets/GET_ONE_TWEET'
 const NEW_TWEET = 'tweets/NEW_TWEET';
 
 const getAllTweets = tweets => ({
     type: GET_ALL_TWEETS,
     tweets
+})
+
+const getOneTweet = tweet => ({
+    type: GET_ONE_TWEET,
+    tweet
 })
 
 const newTweet = tweet => ({
@@ -21,6 +27,14 @@ export const getAllTweetsThunk = () => async (dispatch) => {
     if(res.ok){
         const tweets = await res.json()
         dispatch(getAllTweets(tweets))
+    }
+}
+
+export const getOneTweetThunk = (id) => async (dispatch) => {
+    const res = await fetch(`/api/tweets/${id}`)
+    if(res.ok){
+        const tweet = await res.json()
+        dispatch(getOneTweet(tweet))
     }
 }
 
@@ -45,6 +59,10 @@ const tweetsReducer = (state = {}, action) => {
             action.tweets.tweets.forEach((tweet) => {
                 newState[tweet.id] = tweet
             })
+            return newState;
+        case GET_ONE_TWEET:
+            newState = {...state}
+            newState[action.tweet.tweet.id] = action.tweet.tweet
             return newState;
         case NEW_TWEET:
             newState = {...state}
