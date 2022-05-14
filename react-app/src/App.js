@@ -14,6 +14,7 @@ import SplashPage from './components/SplashPage';
 import Tweets from './components/Tweets/index'
 import TweetForm from './components/Tweets/NewTweetForm'
 import SingleTweet from './components/SingleTweet/index'
+import HomePage from './components/HomePage/index'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -64,6 +65,10 @@ function App() {
         </Route>
         <Route path='/tweets/:id'>
           <SingleTweet />
+        </Route>
+
+        <Route exact patch='/construction'>
+          <HomePage />
         </Route>
 
       </Switch>

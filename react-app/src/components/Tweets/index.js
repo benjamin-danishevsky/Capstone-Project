@@ -14,20 +14,21 @@ const Tweets = () => {
     const sessionUser = useSelector(state => state.session.user)
     const tweets = useSelector(state => state.tweets)
     const tweetsData = Object.values(tweets)
-    
+
 
     return (
         <>
             <div>
                 <h1>All Chirps</h1>
                 {tweetsData.map((tweet, idx) => (
-                    <>
-                        <div key={idx}>
+                    <div key={idx}>
+                        <div>
                             <ul>
                                 <li>{tweet.text}</li>
+                                <li>Posted: {tweet.created_at}</li>
                             </ul>
                         </div>
-                    </>
+                    </div>
                 ))}
             </div>
         </>
