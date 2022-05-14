@@ -16,10 +16,19 @@ const HomePage = () => {
 
     return (
         <div className="homepage-page-container">
-            
-            <div className="homepage-navbar-container"></div>
-            <div className="homepage-tweets-container"></div>
-            <div className="homepage-users-links-container"></div>
+
+            <div className="homepage-navbar-container">
+                <p>NavBar</p>
+            </div>
+            <div className="homepage-tweets-container">
+                <p>Chirps</p>
+                <div>
+                    <Tweets />
+                </div>
+            </div>
+            <div className="homepage-users-links-container">
+                <p>Users</p>
+            </div>
         </div>
     )
 }

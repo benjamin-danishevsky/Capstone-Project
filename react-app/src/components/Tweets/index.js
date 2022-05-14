@@ -19,7 +19,6 @@ const Tweets = () => {
     return (
         <>
             <div>
-                <h1>All Chirps</h1>
                 {tweetsData.map((tweet, idx) => (
                     <div key={idx}>
                         <div>
