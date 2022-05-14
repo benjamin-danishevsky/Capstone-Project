@@ -49,7 +49,6 @@ def newTweet():
 
 #Edit existing tweet
 @tweet_routes.route('/<int:id>/edit', methods=['POST'])
-#@login_required #for when adding autherization
 def edit_tweet(id):
     form = EditTweetForm()
     form['csrf_token'].data = request.cookies['csrf_token']

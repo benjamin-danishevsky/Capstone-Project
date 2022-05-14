@@ -3,16 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import * as tweetActions from '../../store/tweets'
 
-const UpdateTweetForm = () => {
+const UpdateTweetForm = ({tweet, tweetID, hideForm}) => {
     const dispatch = useDispatch()
     const history = useHistory()
 
     const sessionUser = useSelector(state => state.session.user);
-    const id = sessionUser.id
-    const tweets = useSelector(state => state.tweets)
 
+    //const tweets = useSelector(state => state.tweets)
+    const  tweetData = tweet[0]
+    //console.log(tweetID)
 
-    const [text, setText] = useState('');
+    const [text, setText] = useState(tweetData.text);
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -20,8 +21,8 @@ const UpdateTweetForm = () => {
         const newTweet = {
             text,
         }
-        //dispatch(tweetActions.newTweetThunk(newTweet));
-        setText('')
+        dispatch(tweetActions.updateTweetThunk(tweetID, newTweet));
+        hideForm()
     }
 
     return (
