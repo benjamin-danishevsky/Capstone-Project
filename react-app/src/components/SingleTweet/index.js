@@ -53,7 +53,12 @@ const SingleTweet = () => {
                 Edit</button>
 
             {showEditForm && content}
-            <button>Delete</button>
+            <button
+                onClick={() => {
+                    dispatch(tweetActions.deleteTweetThunk(tweetData[0]?.id))
+                    history.push('/tweets')
+                }}
+            >Delete</button>
         </>
     )
 }

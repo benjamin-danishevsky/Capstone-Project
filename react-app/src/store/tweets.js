@@ -2,6 +2,7 @@ const GET_ALL_TWEETS = 'tweets/GET_ALL_TWEETS';
 const GET_ONE_TWEET = 'tweets/GET_ONE_TWEET'
 const NEW_TWEET = 'tweets/NEW_TWEET';
 const UPDATE_TWEET = 'tweets/UPDATE_TWEET'
+const DELETE_TWEET = 'tweets/DELETE_TWEET'
 
 const getAllTweets = tweets => ({
     type: GET_ALL_TWEETS,
@@ -21,6 +22,11 @@ const newTweet = tweet => ({
 const updateTweet = tweet => ({
     type: UPDATE_TWEET,
     tweet
+})
+
+const deleteTweet = id => ({
+    type: DELETE_TWEET,
+    id
 })
 
 
@@ -68,6 +74,15 @@ export const updateTweetThunk = (id, payload) => async (dispatch) => {
     }
 }
 
+export const deleteTweetThunk = (id) => async (dispatch) => {
+    const res = await fetch(`/api/tweets/${id}`, {
+        method: 'DELETE'
+    })
+    if(res.ok){
+        dispatch(deleteTweet(id))
+    }
+}
+
 
 const tweetsReducer = (state = {}, action) => {
     let newState;
@@ -90,6 +105,10 @@ const tweetsReducer = (state = {}, action) => {
             newState = {...state}
             newState[action.tweet.id] = action.tweet
             return newState
+        case DELETE_TWEET:
+            newState = {...state}
+            delete newState[action.id];
+            return newState;
         default:
             return state
     }
