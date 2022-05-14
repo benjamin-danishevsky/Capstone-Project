@@ -13,6 +13,7 @@ import { authenticate } from './store/session';
 import SplashPage from './components/SplashPage';
 import Tweets from './components/Tweets/index'
 import TweetForm from './components/Tweets/NewTweetForm'
+import SingleTweet from './components/SingleTweet/index'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -60,6 +61,9 @@ function App() {
         <Route exact path='/tweets'>
           <Tweets />
           <TweetForm />
+        </Route>
+        <Route path='/tweets/:id'>
+          <SingleTweet />
         </Route>
 
       </Switch>
