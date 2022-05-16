@@ -25,4 +25,4 @@ class Comment(db.Model):
             'comment': self.comment,
             'user_id': self.user_id,
             'tweet_id': self.tweet_id
-        }
+        } 
