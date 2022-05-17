@@ -26,7 +26,7 @@ const Tweets = () => {
                     <div key={idx}>
                         <div>
                             <ul>
-                                <li>@{users[tweet.user_id].username}</li>
+                                <li>@{users[tweet.user_id]?.username}</li>
                                 <li>{tweet.text}</li>
                                 <li>Posted: {tweet.created_at}</li>
                             </ul>
