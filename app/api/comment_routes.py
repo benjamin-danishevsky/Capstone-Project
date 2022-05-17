@@ -61,3 +61,10 @@ def edit_tweet_comment(id):
         return comment.to_dict()
 
     return form.errors
+
+@comment_routes.route('/<int:id>', methods=['DELETE'])
+def delete_comment(id):
+    comment = Comment.query.get(id)
+    db.session.delete(comment)
+    db.session.commit()
+    return comment.to_dict()
