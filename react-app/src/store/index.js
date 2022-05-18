@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import tweetsReducer from './tweets'
 import usersReducer from './users'
+import commentsReducer from './comments'
 
 const rootReducer = combineReducers({
   session,
   tweets: tweetsReducer,
   users: usersReducer,
+  comments: commentsReducer,
 });
 
 

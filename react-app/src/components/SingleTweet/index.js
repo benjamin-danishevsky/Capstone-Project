@@ -5,6 +5,7 @@ import * as tweetActions from '../../store/tweets'
 import * as userActions from '../../store/users'
 
 import UpdateTweetForm from '../Tweets/UpdateTweetForm'
+import Comments from '../Comments/index'
 
 const SingleTweet = () => {
     const history = useHistory();
@@ -59,6 +60,8 @@ const SingleTweet = () => {
                     history.push('/tweets')
                 }}
             >Delete</button>
+
+            <Comments tweetID={id}/>
         </>
     )
 }
