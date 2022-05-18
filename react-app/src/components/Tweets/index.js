@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import * as tweetActions from '../../store/tweets'
 import * as userActions from '../../store/users'
+// use moment js for time posted. moment.js. react date pickers
+import './Tweets.css'
 
 const Tweets = () => {
     const history = useHistory();
