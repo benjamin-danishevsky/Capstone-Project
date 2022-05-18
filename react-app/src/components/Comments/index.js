@@ -5,6 +5,8 @@ import * as commentActions from "../../store/comments";
 import * as userActions from '../../store/users'
 
 import CommentForm from './NewCommentForm'
+import UpdateCommentForm from './UpdateCommentForm'
+import SingleComment from './SingleComment'
 
 const Comments = ({ tweetID }) => {
     const history = useHistory();
@@ -23,22 +25,24 @@ const Comments = ({ tweetID }) => {
         dispatch(userActions.getAllUsersThunk())
     }, [dispatch]);
 
+
     return (
         <>
             <div>
                 <h3>Comments: ...</h3>
 
+                <p>-------------------------------</p>
                 <CommentForm tweetID={tweetID}/>
+                <p>-------------------------------</p>
 
                 {commentsData.map((comment, idx) => (
-                    <div key={idx}>
-                        <ul>
-                            <li>@{users[comment.user_id]?.username}</li>
-                            <li>{comment.comment}</li>
-                        </ul>
-                        <button>Edit</button>
-                        <button>Delete</button>
-                    </div>
+                    
+                    <SingleComment
+                        comment={comment}
+                        idx={idx}
+                        owner={users[comment.user_id]?.username}
+
+                    />
                 ))}
             </div>
         </>

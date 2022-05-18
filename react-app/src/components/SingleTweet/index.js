@@ -61,7 +61,7 @@ const SingleTweet = () => {
                 }}
             >Delete</button>
 
-            <Comments tweetID={id}/>
+            <Comments tweet={tweetData} tweetID={id} hideForm={() => setShowEditForm(false)}/>
         </>
     )
 }
