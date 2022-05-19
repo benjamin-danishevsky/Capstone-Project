@@ -31,3 +31,8 @@
     width: 33%;
     align-items: center;
 }
+
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent
+}

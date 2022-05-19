@@ -57,7 +57,7 @@ const SingleTweet = () => {
             <button
                 onClick={() => {
                     dispatch(tweetActions.deleteTweetThunk(tweetData[0]?.id))
-                    history.push('/tweets')
+                    history.push('/construction')
                 }}
             >Delete</button>
 
