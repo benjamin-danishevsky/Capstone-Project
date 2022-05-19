@@ -61,7 +61,6 @@ function App() {
         </Route>
         <Route exact path='/tweets'>
           <Tweets />
-          <TweetForm />
         </Route>
         <Route path='/tweets/:id'>
           <SingleTweet />
