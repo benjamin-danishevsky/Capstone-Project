@@ -1,6 +1,7 @@
 const GET_TWEET_COMMENTS = "comments/GET_TWEET_COMMENTS";
 const NEW_COMMENT = "comments/NEW_COMMENT";
 const UPDATE_COMMENT = "commments/UPDATE_COMMENT";
+const DELETE_COMMENT = "commments/DELETE_COMMENT";
 
 const getTweetComments = (comments) => ({
     type: GET_TWEET_COMMENTS,
@@ -15,6 +16,11 @@ const newComment = comment => ({
 const updateComment = (comment) => ({
     type: UPDATE_COMMENT,
     comment
+})
+
+const deleteComment = id => ({
+    type: DELETE_COMMENT,
+    id
 })
 
 export const getTweetCommentsThunk = (id) => async (dispatch) => {
@@ -43,10 +49,19 @@ export const updateCommentThunk = (id, payload) => async (dispatch) => {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(payload)
     })
-    
+
     if(res.ok){
         const edited = await res.json();
         return dispatch(updateComment(edited))
+    }
+}
+
+export const deleteCommentThunk = id => async (dispatch) => {
+    const res = await fetch(`/api/comments/${id}`, {
+        method: 'DELETE'
+    })
+    if(res.ok){
+        dispatch(deleteComment(id))
     }
 }
 
@@ -67,6 +82,10 @@ const commentsReducer = (state = {}, action) => {
             newState = { ...state }
             newState[action.comment.id] = action.comment
             return newState
+        case DELETE_COMMENT:
+            newState = { ...state }
+            delete newState[action.id];
+            return newState;
         default:
             return state;
     }

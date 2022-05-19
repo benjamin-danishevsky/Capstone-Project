@@ -33,7 +33,9 @@ const SingleComment = ({comment, idx, owner}) => {
                     <UpdateCommentForm comment={comment} hideForm={() => setShowEditForm(false)}/>
                 </div>
             }
-            <button>Delete</button>
+            <button
+                onClick={() => dispatch(commentActions.deleteCommentThunk(comment.id))}
+            >Delete</button>
         </div>
     )
 }

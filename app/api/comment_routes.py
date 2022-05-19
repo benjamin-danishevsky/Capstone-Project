@@ -62,6 +62,7 @@ def edit_tweet_comment(id):
 
     return form.errors
 
+#Delete comment. <int:id> is comment ID
 @comment_routes.route('/<int:id>', methods=['DELETE'])
 def delete_comment(id):
     comment = Comment.query.get(id)
