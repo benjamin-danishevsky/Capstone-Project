@@ -23,7 +23,7 @@ const SignUpForm = () => {
     if(!email) validateErrors.push("Please type in an email.")
     if(!password) validateErrors.push("Please type in your password.")
     if(!repeatPassword) validateErrors.push("Please confirm your password")
-    if(!bio) validateErrors.push("Please enter a bio for your account.")
+    if(!bio) validateErrors.push("Please enter a bio for your account. front err")
 
     if(username.length > 40) validateErrors.push(`Username cannot exceed 40 characters. You have used ${username.length} characters`)
     if(email.length > 255) validateErrors.push(`Email address cannot exceed 255 characters. You have used ${email.length} characters.`)
@@ -34,7 +34,7 @@ const SignUpForm = () => {
 
 
     setFrontErr(validateErrors)
-  }, [username, email, password, repeatPassword])
+  }, [username, email, password, repeatPassword, bio])
 
   const onSignUp = async (e) => {
     e.preventDefault();
