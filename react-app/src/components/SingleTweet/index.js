@@ -15,10 +15,9 @@ const SingleTweet = () => {
     const {id} = useParams();
     const tweet = useSelector(state => state.tweets)
     const tweetData = Object.values(tweet)
-    const tweetOwnerID = tweetData[0]?.id;
+    const tweetOwnerID = tweetData[0]?.user_id;
 
     const user = useSelector(state => state.users)
-    const userData = Object.values(user)[0]
 
     const [showEditForm, setShowEditForm] = useState(false);
 
@@ -44,7 +43,7 @@ const SingleTweet = () => {
         <>
             <h3>Single Tweet</h3>
             <ul>
-                <li>Posted By: {userData?.username}</li>
+                <li>Posted By: @{user[tweetOwnerID]?.username}</li>
                 <li>{tweetData[0]?.text}</li>
                 <li>Posted: {tweetData[0]?.created_at}</li>
             </ul>
