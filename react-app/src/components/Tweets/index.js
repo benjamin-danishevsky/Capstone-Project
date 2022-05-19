@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import * as tweetActions from '../../store/tweets'
 import * as userActions from '../../store/users'
-// use moment js for time posted. moment.js. 
+// use moment js for time posted. moment.js.
 import './Tweets.css'
+import NewTweetForm from './NewTweetForm'
 
 const Tweets = () => {
     const history = useHistory();
@@ -17,12 +18,15 @@ const Tweets = () => {
 
     const sessionUser = useSelector(state => state.session.user)
     const tweets = useSelector(state => state.tweets)
-    const tweetsData = Object.values(tweets)
+    const tweetsData = Object.values(tweets).reverse()
     const users = useSelector(state => state.users)
 
 
     return (
         <>
+            <div>
+                <NewTweetForm />
+            </div>
             <div>
                 {tweetsData.map((tweet, idx) => (
                     <div key={idx}>

@@ -36,6 +36,7 @@ const TweetForm = () => {
             user_id: id
         }
         dispatch(tweetActions.newTweetThunk(newTweet));
+        setHasUsed(false)
         setText('')
     }
 
