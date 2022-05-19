@@ -15,7 +15,7 @@ const Comments = ({ tweetID }) => {
     const sessionUser = useSelector((state) => state.session.user);
     const users = useSelector(state => state.users)
     const comments = useSelector((state) => state.comments);
-    const commentsData = Object.values(comments)
+    const commentsData = Object.values(comments).reverse()
 
     const [showEditForm, setShowEditForm] = useState(false);
 

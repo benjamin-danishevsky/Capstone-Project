@@ -44,7 +44,7 @@ const UpdateTweetForm = ({tweet, tweetID, hideForm}) => {
         <div className = "update-tweet-form">
             <form onSubmit={handleSubmit}>
                 <ul className="create-tweet-errors-list">
-                    {errors && errors.map((error) => (
+                    {errors && hasUsed && errors.map((error) => (
                         <li className='error'key={error} style={{color: 'red'}}>{error}</li>
                     ))}
                 </ul>
