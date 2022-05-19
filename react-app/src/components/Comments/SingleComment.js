@@ -33,6 +33,7 @@ const SingleComment = ({comment, idx, owner}) => {
                     <UpdateCommentForm comment={comment} hideForm={() => setShowEditForm(false)}/>
                 </div>
             }
+            <button>Delete</button>
         </div>
     )
 }

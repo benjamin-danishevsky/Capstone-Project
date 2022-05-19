@@ -11,10 +11,6 @@ const UpdateCommentForm = ({comment, tweetID, hideForm}) => {
 
     const sessionUser = useSelector(state => state.session.user);
 
-    //const tweets = useSelector(state => state.tweets)
-    
-    //console.log(tweetID)
-
     const [text, setText] = useState(comment.comment);
 
     const handleSubmit = async e => {
@@ -24,7 +20,7 @@ const UpdateCommentForm = ({comment, tweetID, hideForm}) => {
             comment: text,
         }
 
-        //dispatch here
+        dispatch(commentActions.updateCommentThunk(comment.id, updateComment))
         hideForm()
     }
 
