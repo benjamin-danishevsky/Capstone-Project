@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
@@ -10,8 +10,18 @@ const LoginForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  const [frontErr, setFrontErr] = useState([]);
+
+  useEffect(() => {
+    const validateErrors = [];
+    if(!email) validateErrors.push("Please type in your email.")
+    if(!password) validateErrors.push("Please type in your password.")
+    setFrontErr(validateErrors)
+  }, [email, password])
+
   const onLogin = async (e) => {
     e.preventDefault();
+    if(frontErr.length > 0) return
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
@@ -27,11 +37,16 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/construction' />;
   }
 
   return (
     <form onSubmit={onLogin}>
+      <div>
+        {frontErr.map((error, ind) => (
+            <div key={ind}>{error}</div>
+        ))}
+      </div>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as tweetActions from '../../store/tweets'
 import * as userActions from '../../store/users'
 // use moment js for time posted. moment.js.
@@ -30,13 +31,15 @@ const Tweets = () => {
             <div>
                 {tweetsData.map((tweet, idx) => (
                     <div key={idx}>
-                        <div>
-                            <ul>
-                                <li>@{users[tweet.user_id]?.username}</li>
-                                <li>{tweet.text}</li>
-                                <li>Posted: {tweet.created_at}</li>
-                            </ul>
-                        </div>
+                        <Link to={`/tweets/${tweet.id}`}>
+                            <div>
+                                <ul>
+                                    <li>@{users[tweet.user_id]?.username}</li>
+                                    <li>{tweet.text}</li>
+                                    <li>Posted: {tweet.created_at}</li>
+                                </ul>
+                            </div>
+                        </Link>
                     </div>
                 ))}
             </div>
