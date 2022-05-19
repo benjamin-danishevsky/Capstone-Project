@@ -15,6 +15,7 @@ const SingleTweet = () => {
     const {id} = useParams();
     const tweet = useSelector(state => state.tweets)
     const tweetData = Object.values(tweet)
+    console.log(tweetData)
     const tweetOwnerID = tweetData[0]?.user_id;
 
     const user = useSelector(state => state.users)
