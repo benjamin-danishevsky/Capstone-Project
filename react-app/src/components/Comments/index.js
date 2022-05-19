@@ -36,13 +36,15 @@ const Comments = ({ tweetID }) => {
                 <p>-------------------------------</p>
 
                 {commentsData.map((comment, idx) => (
-                    
-                    <SingleComment
-                        comment={comment}
-                        idx={idx}
-                        owner={users[comment.user_id]?.username}
+                    <div key={idx}>
+                        <SingleComment
+                            comment={comment}
+                            idx={idx}
+                            owner={users[comment.user_id]?.username}
 
-                    />
+                        />
+                    </div>
+
                 ))}
             </div>
         </>
