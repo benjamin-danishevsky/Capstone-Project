@@ -69,7 +69,7 @@ const commentsReducer = (state = {}, action) => {
     let newState;
     switch (action.type) {
         case GET_TWEET_COMMENTS:
-            newState = { ...state };
+            newState = {  };
             action.comments.comments.forEach((comment) => {
                 newState[comment.id] = comment;
             });
