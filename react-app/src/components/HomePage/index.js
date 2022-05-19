@@ -6,6 +6,7 @@ import * as userActions from '../../store/users'
 
 import Tweets from '../Tweets/index'
 import './HomePage.css'
+import NavBar from '../NavBar'
 
 const HomePage = () => {
     const history = useHistory();
@@ -14,11 +15,15 @@ const HomePage = () => {
     const tweetsObj = useSelector(state => state.tweets)
     const userObj = useSelector(state => state.user)
 
+    if(!sessionUser) history.push('/')
     return (
         <div className="homepage-page-container">
 
             <div className="homepage-navbar-container">
                 <p>NavBar</p>
+                <div>
+                    <NavBar />
+                </div>
             </div>
             <div className="homepage-tweets-container">
                 <p>Chirps</p>

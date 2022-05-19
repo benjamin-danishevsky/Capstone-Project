@@ -8,7 +8,9 @@ const TweetForm = () => {
     const history = useHistory()
 
     const sessionUser = useSelector(state => state.session.user);
-    const id = sessionUser.id
+    let id = null
+    if(!sessionUser) history.push('/')
+    if(sessionUser) id = sessionUser.id
     const tweets = useSelector(state => state.tweets)
 
 
