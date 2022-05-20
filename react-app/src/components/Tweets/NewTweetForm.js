@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import * as tweetActions from '../../store/tweets'
+import './Tweets.css'
 
 const TweetForm = () => {
     const dispatch = useDispatch()
@@ -43,28 +44,32 @@ const TweetForm = () => {
     }
 
     return (
-        <div className = "new-tweet-form">
-            <form onSubmit={handleSubmit}>
-                <ul className="create-tweet-errors-list">
-                    {errors && hasUsed && errors.map((error) => (
-                        <li className='error'key={error} style={{color: 'red'}}>{error}</li>
-                    ))}
-                </ul>
-                <h1>Create a new Chirp</h1>
+
+        <form onSubmit={handleSubmit} className="new-tweet-form">
+            <ul className="create-tweet-errors-list">
+                {errors && hasUsed && errors.map((error) => (
+                    <li className='error'key={error} style={{color: 'red'}}>{error}</li>
+                ))}
+            </ul>
+            <div className = "input-and-button-container">
                 <div>
-                    <input
+                    <textarea
+                        className='tweet-input'
                         type='input'
                         placeholder="What's your chirp?"
                         value={text}
                         onChange={e => setText(e.target.value)}
                     />
                 </div>
-
-                <div>
-                    <button typ='submit'>Submit</button>
+                
+                <div className='new-tweet-btn-div'>
+                    <button className='submit-button'typ='submit'>Chirp</button>
                 </div>
-            </form>
-        </div>
+
+            </div>
+
+        </form>
+
     )
 }
 

@@ -21,18 +21,18 @@ const HomePage = () => {
 
             <div className="homepage-navbar-container">
                 <p>NavBar</p>
-                <div>
+                <div className='homepage-navbar'>
                     <NavBar />
                 </div>
             </div>
             <div className="homepage-tweets-container">
                 <p>Chirps</p>
-                <div>
+                <div className="homepage-all-tweets">
                     <Tweets />
                 </div>
             </div>
             <div className="homepage-users-links-container">
-                <p>Users</p>
+                {/* <p>Users</p> */}
             </div>
         </div>
     )
