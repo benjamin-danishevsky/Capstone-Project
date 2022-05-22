@@ -23,14 +23,10 @@ const SingleTweet = () => {
     const user = useSelector(state => state.users)
 
     const [showEditForm, setShowEditForm] = useState(false);
-    const [visibility, setVisibility] = useState(true)
+
     const [canEdit, setCanEdit] = useState(false)
 
-    useEffect(() => {
-        if (!sessionUser) {
-            setVisibility(false)
-        }
-    }, [])
+   
 
 
     useEffect(() => {
