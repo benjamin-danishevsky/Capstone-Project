@@ -26,20 +26,18 @@ const SingleTweet = () => {
 
     const [canEdit, setCanEdit] = useState(false)
 
-
-
-
     useEffect(() => {
         dispatch(tweetActions.getOneTweetThunk(id))
     }, [dispatch])
 
     useEffect(() => {
+        dispatch(userActions.getUserThunk(tweetData[0]?.user_id))
+        //checks if logged in user is owner of tweet
         if (sessionUser){
             if (sessionUser.id === tweetData[0]?.user_id){
                 setCanEdit(true)
             }
         }
-        dispatch(userActions.getUserThunk(tweetData[0]?.user_id))
     }, [dispatch, tweet])
 
     let content = null
