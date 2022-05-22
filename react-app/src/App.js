@@ -35,14 +35,14 @@ function App() {
     <BrowserRouter>
       {/* <NavBar /> */}
       <Switch>
-        <Route path='/login' exact={true}>
+        {/* <Route path='/login' exact={true}>
           <NavBar />
           <LoginForm />
         </Route>
         <Route path='/sign-up' exact={true}>
           <NavBar />
           <SignUpForm />
-        </Route>
+        </Route> */}
         <ProtectedRoute path='/users' exact={true} >
           <NavBar />
           <UsersList/>
@@ -51,9 +51,9 @@ function App() {
           <NavBar />
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
+        <Route path='/' exact={true} >
           <SplashPage />
-        </ProtectedRoute>
+        </Route>
 
         <Route exact path='/tweets'>
           <Tweets />
