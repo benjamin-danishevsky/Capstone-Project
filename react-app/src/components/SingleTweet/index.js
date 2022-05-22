@@ -26,22 +26,22 @@ const SingleTweet = () => {
 
     const [canEdit, setCanEdit] = useState(false)
 
+
     useEffect(() => {
         dispatch(tweetActions.getOneTweetThunk(id))
     }, [dispatch])
 
     useEffect(() => {
         dispatch(userActions.getUserThunk(tweetData[0]?.user_id))
-        //checks if logged in user is owner of tweet
-        if (sessionUser){
-            console.log("HAS USER LOGGED IN")
-            console.log("User: ", sessionUser.id)
-            console.log("POST OWNER: ", tweetData[0]?.user_id)
-            if (sessionUser.id === tweetData[0]?.user_id){
-                console.log("USER OWNS POST")
-                setCanEdit(true)
+        if(tweetData.length === 1){
+            if (sessionUser){
+                console.log(tweetData[0])
+                if (sessionUser?.id === tweetData[0]?.user_id){
+                    setCanEdit(true)
+                }
             }
         }
+        //checks if logged in user is owner of tweet
     }, [dispatch, tweet, canEdit]);
 
     let content = null
