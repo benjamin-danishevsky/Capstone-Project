@@ -86,6 +86,7 @@ export const deleteTweetThunk = (id) => async (dispatch) => {
 
 const tweetsReducer = (state = {}, action) => {
     let newState;
+    console.log("REDUCER", action.type)
     switch(action.type){
         case GET_ALL_TWEETS:
             newState = {...state}
@@ -95,6 +96,7 @@ const tweetsReducer = (state = {}, action) => {
             return newState;
         case GET_ONE_TWEET:
             newState = {}
+            console.log("GET ONE TWEET")
             newState[action.tweet.tweet.id] = action.tweet.tweet
             return newState;
         case NEW_TWEET:
