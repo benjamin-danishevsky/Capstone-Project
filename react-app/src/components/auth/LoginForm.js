@@ -11,6 +11,7 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   const [frontErr, setFrontErr] = useState([]);
+  const [hasUsed, setHasUsed] = useState(false);
 
   useEffect(() => {
     const validateErrors = [];
@@ -21,11 +22,13 @@ const LoginForm = () => {
 
   const onLogin = async (e) => {
     e.preventDefault();
+    setHasUsed(true)
     if(frontErr.length > 0) return
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
     }
+    setHasUsed(false)
   };
 
   const updateEmail = (e) => {
@@ -43,8 +46,8 @@ const LoginForm = () => {
   return (
     <form onSubmit={onLogin}>
       <div>
-        {frontErr.map((error, ind) => (
-            <div key={ind}>{error}</div>
+        {frontErr && hasUsed && frontErr.map((error, ind) => (
+            <div style={{color: 'red'}} key={ind}>{error}</div>
         ))}
       </div>
       <div>
