@@ -61,17 +61,19 @@ const SingleTweet = () => {
                         <p>Posted: {tweetData[0]?.created_at}</p>
                     </div>
                     <button
+                        className='update-tweet-button'
                         onClick={() => setShowEditForm(true)}
                     >
                         Edit</button>
 
-                    {showEditForm && content}
                     <button
+                        className='update-tweet-button'
                         onClick={() => {
                             dispatch(tweetActions.deleteTweetThunk(tweetData[0]?.id))
                             history.push('/construction')
                         }}
-                    >Delete</button>
+                        >Delete</button>
+                    {showEditForm && content}
                 </div>
 
                 <Comments tweet={tweetData} tweetID={id} hideForm={() => setShowEditForm(false)}/>

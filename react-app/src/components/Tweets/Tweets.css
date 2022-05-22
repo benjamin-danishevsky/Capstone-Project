@@ -162,11 +162,36 @@ html {
     height: 50px;
     padding: 6px;
     margin: 15px;
-    
+
     border-radius: 50px;
     border-width: 1px;
     border-style: solid;
     font-size: 15px;
+    color: #dad7d2;
+    font-weight: 700;
+}
+
+/* Update Tweet Form */
+
+.update-tweet-form{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.update-tweet-button{
+    background-color: #3c5aa6;
+    cursor: pointer;
+    width: 50px;
+    height: 30px;
+    padding: 6px;
+    margin: 15px;
+
+    border-radius: 50px;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 10px;
     color: #dad7d2;
     font-weight: 700;
 }
