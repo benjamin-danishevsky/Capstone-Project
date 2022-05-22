@@ -18,18 +18,31 @@ const SingleTweet = () => {
     const {id} = useParams();
     const tweet = useSelector(state => state.tweets)
     const tweetData = Object.values(tweet)
-    console.log(tweetData)
     const tweetOwnerID = tweetData[0]?.user_id;
 
     const user = useSelector(state => state.users)
 
     const [showEditForm, setShowEditForm] = useState(false);
+    const [visibility, setVisibility] = useState(true)
+    const [canEdit, setCanEdit] = useState(false)
+
+    useEffect(() => {
+        if (!sessionUser) {
+            setVisibility(false)
+        }
+    }, [])
+
 
     useEffect(() => {
         dispatch(tweetActions.getOneTweetThunk(id))
     }, [dispatch])
 
     useEffect(() => {
+        if (sessionUser){
+            if (sessionUser.id === tweetData[0]?.user_id){
+                setCanEdit(true)
+            }
+        }
         dispatch(userActions.getUserThunk(tweetData[0]?.user_id))
     }, [dispatch, tweet])
 
@@ -42,7 +55,6 @@ const SingleTweet = () => {
             </div>
         )
     }
-
     return (
         <div className="homepage-page-container">
             <div className="homepage-navbar-container">
@@ -63,6 +75,7 @@ const SingleTweet = () => {
                     <button
                         className='update-tweet-button'
                         onClick={() => setShowEditForm(true)}
+                        style={{ visibility: canEdit ? 'visible' : 'hidden' }}
                     >
                         Edit</button>
 
@@ -70,8 +83,9 @@ const SingleTweet = () => {
                         className='update-tweet-button'
                         onClick={() => {
                             dispatch(tweetActions.deleteTweetThunk(tweetData[0]?.id))
-                            history.push('/construction')
+                            history.push('/home')
                         }}
+                        style={{ visibility: canEdit ? 'visible' : 'hidden' }}
                         >Delete</button>
                     {showEditForm && content}
                 </div>

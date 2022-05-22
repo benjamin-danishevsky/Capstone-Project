@@ -52,13 +52,9 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <NavBar />
-          <h1>My Home Page</h1>
+          <SplashPage />
         </ProtectedRoute>
 
-        <Route exact path='/splash'>
-          <SplashPage />
-        </Route>
         <Route exact path='/tweets'>
           <Tweets />
         </Route>
@@ -66,7 +62,7 @@ function App() {
           <SingleTweet />
         </Route>
 
-        <Route exact patch='/construction'>
+        <Route exact patch='/home'>
           <HomePage />
         </Route>
 
