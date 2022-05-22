@@ -44,7 +44,7 @@ const UpdateTweetForm = ({tweet, tweetID, hideForm}) => {
         <form onSubmit={handleSubmit} className="update-tweet-form">
             <ul className="create-comment-errors-list">
                 {errors && hasUsed && errors.map((error) => (
-                    <li className='error'key={error} style={{color: 'red'}}>{error}</li>
+                    <p className='error'key={error} style={{color: 'red'}}>{error}</p>
                 ))}
             </ul>
             <h4 className='comment-h4'>Update your Chirp</h4>

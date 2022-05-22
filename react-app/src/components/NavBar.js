@@ -4,16 +4,21 @@ import { useHistory } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
 
 import LogoutButton from './auth/LogoutButton';
+import './NavBar.css'
 
 const NavBar = () => {
   return (
     <nav>
-      <ul>
-        <li>
-          <NavLink to='/home' exact={true} activeClassName='active'>
+        <p className="nav-home-container">
+          <NavLink
+            to='/home'
+            exact={true}
+            activeClassName='active'
+            className='nav-home-link'
+            >
             Home
           </NavLink>
-        </li>
+        </p>
         {/* <li>
           <NavLink to='/login' exact={true} activeClassName='active'>
             Login
@@ -29,10 +34,9 @@ const NavBar = () => {
             Users
           </NavLink>
         </li> */}
-        <li>
+        <p>
           <LogoutButton />
-        </li>
-      </ul>
+        </p>
     </nav>
   );
 }

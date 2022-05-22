@@ -26,7 +26,7 @@ const SingleTweet = () => {
 
     const [canEdit, setCanEdit] = useState(false)
 
-   
+
 
 
     useEffect(() => {
@@ -54,7 +54,7 @@ const SingleTweet = () => {
     return (
         <div className="homepage-page-container">
             <div className="homepage-navbar-container">
-                <p>NavBar</p>
+                <h3>NavBar</h3>
                 <div className='homepage-navbar'>
                     <NavBar />
                 </div>

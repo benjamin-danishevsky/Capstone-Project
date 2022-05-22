@@ -40,6 +40,10 @@ html {
     width: 100%;
 }
 
+.error{
+    font-size: 18px;
+}
+
 
 .input-and-button-container{
     display: flex;

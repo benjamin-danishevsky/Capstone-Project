@@ -48,7 +48,7 @@ const TweetForm = () => {
         <form onSubmit={handleSubmit} className="new-tweet-form">
             <ul className="create-tweet-errors-list">
                 {errors && hasUsed && errors.map((error) => (
-                    <li className='error'key={error} style={{color: 'red'}}>{error}</li>
+                    <p className='error'key={error} style={{color: 'red'}}>{error}</p>
                 ))}
             </ul>
             <div className = "input-and-button-container">
@@ -61,7 +61,7 @@ const TweetForm = () => {
                         onChange={e => setText(e.target.value)}
                     />
                 </div>
-                
+
                 <div className='new-tweet-btn-div'>
                     <button className='submit-button'typ='submit'>Chirp</button>
                 </div>

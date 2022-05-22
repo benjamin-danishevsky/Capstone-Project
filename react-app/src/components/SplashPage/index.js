@@ -6,6 +6,7 @@ import splashImg from '../images/pokemon-splash.png';
 import icon from '../images/bulbasaur.png'
 import LoginFormModal from "../auth/LoginModal";
 import SignupFormModal from "../auth/SignUpModal"
+import Footer from '../Footer'
 
 function SplashPage(){
 
@@ -25,6 +26,10 @@ function SplashPage(){
                     {/* <button className='login-button' onClick={() => history.push('/login')} >Sign in</button> */}
                     <SignupFormModal />
                     <LoginFormModal />
+
+                <div className='splash-page-footer-container'>
+                    <Footer />
+                </div>
                 </div>
             </div>
         </>

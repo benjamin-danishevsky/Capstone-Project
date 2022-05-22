@@ -43,7 +43,7 @@ const UpdateCommentForm = ({comment, tweetID, hideForm}) => {
         <form onSubmit={handleSubmit} className='new-comment-form'>
             <ul className="create-comement-errors-list">
                 {errors && hasUsed && errors.map((error) => (
-                    <li className='error'key={error} style={{color: 'red'}}>{error}</li>
+                    <p className='error'key={error} style={{color: 'red'}}>{error}</p>
                 ))}
             </ul>
             <h4 className='comment-h4'>Update your Comment</h4>
