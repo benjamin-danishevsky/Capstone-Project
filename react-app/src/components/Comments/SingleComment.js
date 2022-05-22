@@ -5,6 +5,7 @@ import * as commentActions from "../../store/comments";
 import * as userActions from '../../store/users'
 
 import UpdateCommentForm from './UpdateCommentForm'
+import '../Tweets/Tweets.css'
 
 const SingleComment = ({comment, idx, owner}) => {
     const history = useHistory();
@@ -15,18 +16,28 @@ const SingleComment = ({comment, idx, owner}) => {
     const users = useSelector(state => state.users)
     const comments = useSelector((state) => state.comments);
     const [showEditForm, setShowEditForm] = useState(false);
+    const [canEdit, setCanEdit] = useState(false)
+
+    useEffect(() => {
+        if (sessionUser){
+            if (sessionUser.id === comment?.user_id){
+                setCanEdit(true)
+            }
+        }
+    }, [comments])
 
     return (
 
         <div>
-            <ul>
-                <li>@{owner}</li>
-                <li>{comment.comment}</li>
-                <li>Index: {idx}</li>
-            </ul>
+            <div className="comment-text">
+                <p className="comment-p-tag">@{owner}</p>
+                <p className="comment-p-tag">{comment.comment}</p>
+            </div>
 
             <button
+                className='comment-button'
                 onClick={() => setShowEditForm(true)}
+                style={{ visibility: canEdit ? 'visible' : 'hidden' }}
             >Edit</button>
             {showEditForm &&
                 <div>
@@ -34,7 +45,9 @@ const SingleComment = ({comment, idx, owner}) => {
                 </div>
             }
             <button
+                className='comment-button'
                 onClick={() => dispatch(commentActions.deleteCommentThunk(comment.id))}
+                style={{ visibility: canEdit ? 'visible' : 'hidden' }}
             >Delete</button>
         </div>
     )

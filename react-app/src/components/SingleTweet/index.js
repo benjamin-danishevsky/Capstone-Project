@@ -6,6 +6,9 @@ import * as userActions from '../../store/users'
 
 import UpdateTweetForm from '../Tweets/UpdateTweetForm'
 import Comments from '../Comments/index'
+import NavBar from '../NavBar'
+import '../Tweets/Tweets.css'
+import '../HomePage/HomePage.css'
 
 const SingleTweet = () => {
     const history = useHistory();
@@ -15,18 +18,27 @@ const SingleTweet = () => {
     const {id} = useParams();
     const tweet = useSelector(state => state.tweets)
     const tweetData = Object.values(tweet)
-    console.log(tweetData)
     const tweetOwnerID = tweetData[0]?.user_id;
 
     const user = useSelector(state => state.users)
 
     const [showEditForm, setShowEditForm] = useState(false);
 
+    const [canEdit, setCanEdit] = useState(false)
+
+
+
+
     useEffect(() => {
         dispatch(tweetActions.getOneTweetThunk(id))
     }, [dispatch])
 
     useEffect(() => {
+        if (sessionUser){
+            if (sessionUser.id === tweetData[0]?.user_id){
+                setCanEdit(true)
+            }
+        }
         dispatch(userActions.getUserThunk(tweetData[0]?.user_id))
     }, [dispatch, tweet])
 
@@ -34,35 +46,53 @@ const SingleTweet = () => {
     //console.log(id)
     if (showEditForm) {
         content = (
-            <>
+            <div>
                 <UpdateTweetForm tweet={tweetData} tweetID={id} hideForm={() => setShowEditForm(false)} />
-            </>
+            </div>
         )
     }
-
     return (
-        <>
-            <h3>Single Tweet</h3>
-            <ul>
-                <li>Posted By: @{user[tweetOwnerID]?.username}</li>
-                <li>{tweetData[0]?.text}</li>
-                <li>Posted: {tweetData[0]?.created_at}</li>
-            </ul>
-            <button
-                onClick={() => setShowEditForm(true)}
-            >
-                Edit</button>
+        <div className="homepage-page-container">
+            <div className="homepage-navbar-container">
+                <h3>NavBar</h3>
+                <div className='homepage-navbar'>
+                    <NavBar />
+                </div>
+            </div>
 
-            {showEditForm && content}
-            <button
-                onClick={() => {
-                    dispatch(tweetActions.deleteTweetThunk(tweetData[0]?.id))
-                    history.push('/construction')
-                }}
-            >Delete</button>
+            <div className='homepage-tweets-container'>
 
-            <Comments tweet={tweetData} tweetID={id} hideForm={() => setShowEditForm(false)}/>
-        </>
+                <div className='individual-tweet'>
+                    <div className="individual-tweet-text">
+                        <p>Posted By: @{user[tweetOwnerID]?.username}</p>
+                        <p>{tweetData[0]?.text}</p>
+                        <p>Posted: {tweetData[0]?.created_at}</p>
+                    </div>
+                    <button
+                        className='update-tweet-button'
+                        onClick={() => setShowEditForm(true)}
+                        style={{ visibility: canEdit ? 'visible' : 'hidden' }}
+                    >
+                        Edit</button>
+
+                    <button
+                        className='update-tweet-button'
+                        onClick={() => {
+                            dispatch(tweetActions.deleteTweetThunk(tweetData[0]?.id))
+                            history.push('/home')
+                        }}
+                        style={{ visibility: canEdit ? 'visible' : 'hidden' }}
+                        >Delete</button>
+                    {showEditForm && content}
+                </div>
+
+                <Comments tweet={tweetData} tweetID={id} hideForm={() => setShowEditForm(false)}/>
+            </div>
+
+            <div className="homepage-users-links-container">
+                {/* <p>Users</p> */}
+            </div>
+        </div>
     )
 }
 

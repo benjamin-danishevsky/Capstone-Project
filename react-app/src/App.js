@@ -35,14 +35,14 @@ function App() {
     <BrowserRouter>
       {/* <NavBar /> */}
       <Switch>
-        <Route path='/login' exact={true}>
+        {/* <Route path='/login' exact={true}>
           <NavBar />
           <LoginForm />
         </Route>
         <Route path='/sign-up' exact={true}>
           <NavBar />
           <SignUpForm />
-        </Route>
+        </Route> */}
         <ProtectedRoute path='/users' exact={true} >
           <NavBar />
           <UsersList/>
@@ -51,14 +51,10 @@ function App() {
           <NavBar />
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <NavBar />
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
-
-        <Route exact path='/splash'>
+        <Route path='/' exact={true} >
           <SplashPage />
         </Route>
+
         <Route exact path='/tweets'>
           <Tweets />
         </Route>
@@ -66,7 +62,7 @@ function App() {
           <SingleTweet />
         </Route>
 
-        <Route exact patch='/construction'>
+        <Route exact patch='/home'>
           <HomePage />
         </Route>
 

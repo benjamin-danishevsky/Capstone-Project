@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 
-const SignUpForm = () => {
+const SignUpForm = ({showModal}) => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -49,6 +49,7 @@ const SignUpForm = () => {
       }
     }
     setHasUsed(false)
+    showModal(false)
   };
 
   const updateUsername = (e) => {
@@ -68,11 +69,11 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/construction' />;
+    return <Redirect to='/home' />;
   }
 
   return (
-    <form onSubmit={onSignUp}>
+    <form onSubmit={onSignUp} className='signUpForm'>
       <div>
         {frontErr && hasUsed && frontErr.map((error, ind) => (
             <div key={ind} style={{color: 'red'}}>{error}</div>
@@ -83,53 +84,55 @@ const SignUpForm = () => {
           <div key={ind} style={{color: 'red'}}>{error}</div>
         ))}
       </div>
-      <div>
-        <label>User Name</label>
-        <input
-          type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type='text'
-          name='email'
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type='password'
-          name='password'
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type='password'
-          name='repeat_password'
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
+      <div className='signUpForm'>
+        <div>
+          <label>User Name</label>
+          <input
+            type='text'
+            name='username'
+            onChange={updateUsername}
+            value={username}
+          ></input>
+        </div>
+        <div>
+          <label>Email</label>
+          <input
+            type='text'
+            name='email'
+            onChange={updateEmail}
+            value={email}
+          ></input>
+        </div>
+        <div>
+          <label>Password</label>
+          <input
+            type='password'
+            name='password'
+            onChange={updatePassword}
+            value={password}
+          ></input>
+        </div>
+        <div>
+          <label>Repeat Password</label>
+          <input
+            type='password'
+            name='repeat_password'
+            onChange={updateRepeatPassword}
+            value={repeatPassword}
 
-        ></input>
+          ></input>
+        </div>
+        <div>
+          <label>Bio</label>
+          <textarea
+            type='text'
+            name='bio'
+            value={bio}
+            onChange={e => setBio(e.target.value)}
+          />
+        </div>
+        <button type='submit'>Sign Up</button>
       </div>
-      <div>
-        <label>Bio</label>
-        <textarea
-          type='text'
-          name='bio'
-          value={bio}
-          onChange={e => setBio(e.target.value)}
-        />
-      </div>
-      <button type='submit'>Sign Up</button>
     </form>
   );
 };

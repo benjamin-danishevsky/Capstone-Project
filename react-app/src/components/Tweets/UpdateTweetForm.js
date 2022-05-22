@@ -41,16 +41,17 @@ const UpdateTweetForm = ({tweet, tweetID, hideForm}) => {
     }
 
     return (
-        <div className = "update-tweet-form">
-            <form onSubmit={handleSubmit}>
-                <ul className="create-tweet-errors-list">
-                    {errors && hasUsed && errors.map((error) => (
-                        <li className='error'key={error} style={{color: 'red'}}>{error}</li>
-                    ))}
-                </ul>
-                <h1>Update your Chirp</h1>
+        <form onSubmit={handleSubmit} className="update-tweet-form">
+            <ul className="create-comment-errors-list">
+                {errors && hasUsed && errors.map((error) => (
+                    <p className='error'key={error} style={{color: 'red'}}>{error}</p>
+                ))}
+            </ul>
+            <h4 className='comment-h4'>Update your Chirp</h4>
+            <div className = "input-and-button-container">
                 <div>
-                    <input
+                    <textarea
+                        className='tweet-input'
                         type='input'
                         placeholder="What's your chirp?"
                         value={text}
@@ -58,12 +59,12 @@ const UpdateTweetForm = ({tweet, tweetID, hideForm}) => {
                     />
                 </div>
 
-                <div>
-                    <button typ='submit'>Submit</button>
-                    <button onClick={() =>  hideForm()}>Cancel</button>
+                <div className='update-tweet-btn-div'>
+                    <button className='update-tweet-button' typ='submit'>Submit</button>
+                    <button className='update-tweet-button' onClick={() =>  hideForm()}>Cancel</button>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     )
 }
 

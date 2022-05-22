@@ -20,19 +20,19 @@ const HomePage = () => {
         <div className="homepage-page-container">
 
             <div className="homepage-navbar-container">
-                <p>NavBar</p>
-                <div>
+                <h3>NavBar</h3>
+                <div className='homepage-navbar'>
                     <NavBar />
                 </div>
             </div>
             <div className="homepage-tweets-container">
-                <p>Chirps</p>
-                <div>
+                <h3>HOME</h3>
+                <div className="homepage-all-tweets">
                     <Tweets />
                 </div>
             </div>
             <div className="homepage-users-links-container">
-                <p>Users</p>
+                {/* <p>Users</p> */}
             </div>
         </div>
     )

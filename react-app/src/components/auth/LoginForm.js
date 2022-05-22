@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import './modals.css'
 
-const LoginForm = () => {
+const LoginForm = ({ showModal }) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -11,6 +12,7 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   const [frontErr, setFrontErr] = useState([]);
+  const [hasUsed, setHasUsed] = useState(false);
 
   useEffect(() => {
     const validateErrors = [];
@@ -21,12 +23,26 @@ const LoginForm = () => {
 
   const onLogin = async (e) => {
     e.preventDefault();
+    setHasUsed(true)
     if(frontErr.length > 0) return
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
+    } else{
+      //showModal(false)
     }
+
+    setHasUsed(false)
   };
+
+  const onDemo = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login('demo@aa.io','password'));
+    if (data) {
+      setErrors(data);
+    }
+    //showModal(false)
+  }
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
@@ -37,14 +53,14 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/construction' />;
+    return <Redirect to='/home' />;
   }
 
   return (
-    <form onSubmit={onLogin}>
+    <form onSubmit={onLogin} className='loginForm'>
       <div>
-        {frontErr.map((error, ind) => (
-            <div key={ind}>{error}</div>
+        {frontErr && hasUsed && frontErr.map((error, ind) => (
+            <div style={{color: 'red'}} key={ind}>{error}</div>
         ))}
       </div>
       <div>
@@ -71,7 +87,10 @@ const LoginForm = () => {
           value={password}
           onChange={updatePassword}
         />
-        <button type='submit'>Login</button>
+        <div className='formButtons'>
+          <button type='submit' className='login-btn'>Login</button>
+          <button type='submit' className='login-btn' onClick={onDemo}>Demo</button>
+        </div>
       </div>
     </form>
   );

@@ -27,27 +27,24 @@ const Comments = ({ tweetID }) => {
 
 
     return (
-        <>
-            <div>
-                <h3>Comments: ...</h3>
+        <div className="all-comments-container">
+                <div className="new-comment-form-container">
+                    <CommentForm tweetID={tweetID}/>
+                </div>
 
-                <p>-------------------------------</p>
-                <CommentForm tweetID={tweetID}/>
-                <p>-------------------------------</p>
+                <div className="comments-container">
+                    {commentsData.map((comment, idx) => (
+                        <div className='individual-comment' key={idx}>
+                            <SingleComment
+                                comment={comment}
+                                idx={idx}
+                                owner={users[comment.user_id]?.username}
+                            />
+                        </div>
+                    ))}
+                </div>
 
-                {commentsData.map((comment, idx) => (
-                    <div key={idx}>
-                        <SingleComment
-                            comment={comment}
-                            idx={idx}
-                            owner={users[comment.user_id]?.username}
-
-                        />
-                    </div>
-
-                ))}
-            </div>
-        </>
+        </div>
     );
 };
 

@@ -24,26 +24,24 @@ const Tweets = () => {
 
 
     return (
-        <>
-            <div>
+        <div className="all-tweets-container">
+            <div className='new-tweet-form-container'>
                 <NewTweetForm />
             </div>
-            <div>
+            <div className='tweets-container'>
                 {tweetsData.map((tweet, idx) => (
-                    <div key={idx}>
-                        <Link to={`/tweets/${tweet.id}`}>
-                            <div>
-                                <ul>
-                                    <li>@{users[tweet.user_id]?.username}</li>
-                                    <li>{tweet.text}</li>
-                                    <li>Posted: {tweet.created_at}</li>
-                                </ul>
+                    <div className='individual-tweet' key={idx}>
+                        <Link to={`/tweets/${tweet.id}`} style={{ textDecoration: 'none' }}>
+                            <div className='individual-tweet-text'>
+                                <p className='tweet-p-tag'>@{users[tweet.user_id]?.username}</p>
+                                <p className='tweet-p-tag'>{tweet.text}</p>
+                                <p className='tweet-p-tag'>Posted: {tweet.created_at}</p>
                             </div>
                         </Link>
                     </div>
                 ))}
             </div>
-        </>
+        </div>
     )
 }
 

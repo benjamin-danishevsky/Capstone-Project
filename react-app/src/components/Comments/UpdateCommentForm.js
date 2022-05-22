@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import * as commentActions from '../../store/comments'
-
+import '../Tweets/Tweets.css'
 
 
 const UpdateCommentForm = ({comment, tweetID, hideForm}) => {
@@ -40,16 +40,19 @@ const UpdateCommentForm = ({comment, tweetID, hideForm}) => {
     }
 
     return (
-        <div className = "update-comment-form">
-            <form onSubmit={handleSubmit}>
-                <ul className="create-tweet-errors-list">
-                    {errors && hasUsed && errors.map((error) => (
-                        <li className='error'key={error} style={{color: 'red'}}>{error}</li>
-                    ))}
-                </ul>
-                <h4>Update your Comment</h4>
+        <form onSubmit={handleSubmit} className='new-comment-form'>
+            <ul className="create-comement-errors-list">
+                {errors && hasUsed && errors.map((error) => (
+                    <p className='error'key={error} style={{color: 'red'}}>{error}</p>
+                ))}
+            </ul>
+            <h4 className='comment-h4'>Update your Comment</h4>
+
+            <div className = "input-and-button-container">
+
                 <div>
-                    <input
+                    <textarea
+                        className='comment-input'
                         type='input'
                         placeholder="Update your Comment..."
                         value={text}
@@ -57,12 +60,12 @@ const UpdateCommentForm = ({comment, tweetID, hideForm}) => {
                     />
                 </div>
 
-                <div>
-                    <button typ='submit'>Submit</button>
-                    <button onClick={() =>  hideForm()}>Cancel</button>
+                <div className='new-comment-btn-div'>
+                    <button className='comment-submit-button' typ='submit'>Submit</button>
+                    <button className='comment-submit-button' onClick={() =>  hideForm()}>Cancel</button>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     )
 }
 
