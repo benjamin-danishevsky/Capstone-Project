@@ -26,6 +26,7 @@ const SingleComment = ({comment, idx, owner}) => {
             </div>
 
             <button
+                className='comment-button'
                 onClick={() => setShowEditForm(true)}
             >Edit</button>
             {showEditForm &&
@@ -34,6 +35,7 @@ const SingleComment = ({comment, idx, owner}) => {
                 </div>
             }
             <button
+                className='comment-button'
                 onClick={() => dispatch(commentActions.deleteCommentThunk(comment.id))}
             >Delete</button>
         </div>

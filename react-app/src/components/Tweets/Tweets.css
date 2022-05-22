@@ -116,7 +116,7 @@ html {
 
 
 .new-comment-form{
-    
+
     display: flex;
     flex-direction: column;
     border-radius: 10px;
@@ -136,4 +136,37 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    width: 100px;
+}
+
+.comment-button{
+    background-color: #3c5aa6;
+    cursor: pointer;
+    width: 50px;
+    height: 30px;
+    padding: 6px;
+    margin: 15px;
+    margin-left: 10px;
+    border-radius: 50px;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 10px;
+    color: #dad7d2;
+    font-weight: 700;
+}
+
+.comment-submit-button{
+    background-color: #3c5aa6;
+    cursor: pointer;
+    width: 80px;
+    height: 50px;
+    padding: 6px;
+    margin: 15px;
+    
+    border-radius: 50px;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 15px;
+    color: #dad7d2;
+    font-weight: 700;
 }
