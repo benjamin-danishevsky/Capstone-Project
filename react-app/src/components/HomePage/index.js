@@ -26,7 +26,7 @@ const HomePage = () => {
                 </div>
             </div>
             <div className="homepage-tweets-container">
-                <p>Chirps</p>
+                <h3>HOME</h3>
                 <div className="homepage-all-tweets">
                     <Tweets />
                 </div>

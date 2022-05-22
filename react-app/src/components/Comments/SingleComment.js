@@ -5,6 +5,7 @@ import * as commentActions from "../../store/comments";
 import * as userActions from '../../store/users'
 
 import UpdateCommentForm from './UpdateCommentForm'
+import '../Tweets/Tweets.css'
 
 const SingleComment = ({comment, idx, owner}) => {
     const history = useHistory();
@@ -19,11 +20,10 @@ const SingleComment = ({comment, idx, owner}) => {
     return (
 
         <div>
-            <ul>
-                <li>@{owner}</li>
-                <li>{comment.comment}</li>
-                <li>Index: {idx}</li>
-            </ul>
+            <div className="comment-text">
+                <p className="comment-p-tag">@{owner}</p>
+                <p className="comment-p-tag">{comment.comment}</p>
+            </div>
 
             <button
                 onClick={() => setShowEditForm(true)}

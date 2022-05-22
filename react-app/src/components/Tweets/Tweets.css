@@ -77,3 +77,63 @@ html {
     color: #dad7d2;
     font-weight: 700;
 }
+
+/* Single Tweet Page */
+
+.all-comments-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.comments-container{
+    width: 100%;
+}
+.individual-comment{
+    border: 3px solid #3c5aa6;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+}
+.comment-h4{
+    font-size: 20px;
+}
+.comment-text{
+    color: black;
+}
+
+.comment-p-tag{
+    font-size: 18px;
+}
+
+/* New Comment Form*/
+.new-comment-form-container{
+    border-radius: 10px;
+    margin-bottom: 0;
+    width: 90%;
+}
+
+
+.new-comment-form{
+    
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.comment-input{
+    width: 120%;
+    height: 100px;
+    border: 1px solid #3c5aa6;
+    border-radius: 10px;
+}
+
+.new-comment-btn-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}

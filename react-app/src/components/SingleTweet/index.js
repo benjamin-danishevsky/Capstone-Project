@@ -6,6 +6,9 @@ import * as userActions from '../../store/users'
 
 import UpdateTweetForm from '../Tweets/UpdateTweetForm'
 import Comments from '../Comments/index'
+import NavBar from '../NavBar'
+import '../Tweets/Tweets.css'
+import '../HomePage/HomePage.css'
 
 const SingleTweet = () => {
     const history = useHistory();
@@ -34,35 +37,50 @@ const SingleTweet = () => {
     //console.log(id)
     if (showEditForm) {
         content = (
-            <>
+            <div>
                 <UpdateTweetForm tweet={tweetData} tweetID={id} hideForm={() => setShowEditForm(false)} />
-            </>
+            </div>
         )
     }
 
     return (
-        <>
-            <h3>Single Tweet</h3>
-            <ul>
-                <li>Posted By: @{user[tweetOwnerID]?.username}</li>
-                <li>{tweetData[0]?.text}</li>
-                <li>Posted: {tweetData[0]?.created_at}</li>
-            </ul>
-            <button
-                onClick={() => setShowEditForm(true)}
-            >
-                Edit</button>
+        <div className="homepage-page-container">
+            <div className="homepage-navbar-container">
+                <p>NavBar</p>
+                <div className='homepage-navbar'>
+                    <NavBar />
+                </div>
+            </div>
 
-            {showEditForm && content}
-            <button
-                onClick={() => {
-                    dispatch(tweetActions.deleteTweetThunk(tweetData[0]?.id))
-                    history.push('/construction')
-                }}
-            >Delete</button>
+            <div className='homepage-tweets-container'>
 
-            <Comments tweet={tweetData} tweetID={id} hideForm={() => setShowEditForm(false)}/>
-        </>
+                <div className='individual-tweet'>
+                    <div className="individual-tweet-text">
+                        <p>Posted By: @{user[tweetOwnerID]?.username}</p>
+                        <p>{tweetData[0]?.text}</p>
+                        <p>Posted: {tweetData[0]?.created_at}</p>
+                    </div>
+                    <button
+                        onClick={() => setShowEditForm(true)}
+                    >
+                        Edit</button>
+
+                    {showEditForm && content}
+                    <button
+                        onClick={() => {
+                            dispatch(tweetActions.deleteTweetThunk(tweetData[0]?.id))
+                            history.push('/construction')
+                        }}
+                    >Delete</button>
+                </div>
+
+                <Comments tweet={tweetData} tweetID={id} hideForm={() => setShowEditForm(false)}/>
+            </div>
+
+            <div className="homepage-users-links-container">
+                {/* <p>Users</p> */}
+            </div>
+        </div>
     )
 }
 

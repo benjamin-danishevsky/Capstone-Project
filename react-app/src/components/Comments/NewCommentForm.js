@@ -40,28 +40,29 @@ const CommentForm = ({tweetID}) => {
     }
 
     return (
-        <div className = "new-comment-form">
-            <form onSubmit={handleSubmit}>
-                <ul className="create-tweet-errors-list">
-                    {errors && hasUsed && errors.map((error) => (
-                        <li className='error'key={error} style={{color: 'red'}}>{error}</li>
-                    ))}
-                </ul>
-                <h4>Leave a comment</h4>
+        <form onSubmit={handleSubmit} className='new-comment-form'>
+            <ul className="create-comment-errors-list">
+                {errors && hasUsed && errors.map((error) => (
+                    <li className='error'key={error} style={{color: 'red'}}>{error}</li>
+                ))}
+            </ul>
+            <h4 className='comment-h4'>Leave a comment</h4>
+            <div className = "input-and-button-container">
                 <div>
-                    <input
+                    <textarea
+                        className='comment-input'
                         type='input'
                         placeholder="Leave a comment..."
                         value={text}
                         onChange={e => setText(e.target.value)}
                     />
                 </div>
-
-                <div>
-                    <button typ='submit'>Submit</button>
+                <div className='new-comment-btn-div'>
+                    <button className='submit-button' typ='submit'>Submit</button>
                 </div>
-            </form>
-        </div>
+            </div>
+
+        </form>
     )
 }
 
