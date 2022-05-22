@@ -25,6 +25,7 @@ const SingleTweet = () => {
     const [showEditForm, setShowEditForm] = useState(false);
 
     const [canEdit, setCanEdit] = useState(false)
+    let visibility = false
 
     useEffect(() => {
         dispatch(tweetActions.getOneTweetThunk(id))
@@ -38,7 +39,7 @@ const SingleTweet = () => {
                 setCanEdit(true)
             }
         }
-    }, [dispatch, tweet])
+    }, [dispatch, tweet, canEdit]);
 
     let content = null
     //console.log(id)
