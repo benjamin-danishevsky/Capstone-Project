@@ -27,8 +27,6 @@ const SingleTweet = () => {
     const [canEdit, setCanEdit] = useState(false)
 
 
-
-
     useEffect(() => {
         dispatch(tweetActions.getOneTweetThunk(id))
     }, [dispatch])
