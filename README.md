@@ -1,6 +1,6 @@
 # PokeChirps
 
-PokeChirps is a clone of Twitter, an application that allows users to share their thoughts with others, and connect with new people.
+PokeChirps is a clone of Twitter, an application that allows users to share their thoughts with others, and connect with new people. Users are able to post their own Chirps, edit/delete their own Chirps, comment on other users' Chirps, and edit/delete their own comments.
 
 ## LiveSite Link
 https://pokechirps.herokuapp.com/
