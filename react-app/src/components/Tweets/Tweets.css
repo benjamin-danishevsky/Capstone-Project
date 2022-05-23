@@ -184,6 +184,12 @@ html {
     width: 100%;
 }
 
+.update-tweet-btn-div{
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+}
+
 .update-tweet-button{
     background-color: #3c5aa6;
     cursor: pointer;
